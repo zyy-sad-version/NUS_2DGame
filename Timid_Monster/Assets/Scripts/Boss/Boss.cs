@@ -9,13 +9,15 @@ public class Boss : MonoBehaviour
     public int bulletCnt = 0;
     public Vector3[] attackLocations = new Vector3[9];
     public const float RotateSpeed = 0.03f;
+    private int totalBlood;
     public int blood = 10;
     public int posCount = 1;
+    public Blood bloodBox;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        totalBlood = blood;
     }
 
     // Update is called once per frame
@@ -111,8 +113,11 @@ public class Boss : MonoBehaviour
 
      private void OnTriggerEnter2D(Collider2D collision){
         if((collision.gameObject.name == "Arrow(Clone)")){ // Flower box need to be bit smaller
-            Debug.Log("boss was hit : " + blood);
+           // Debug.Log("boss was hit : " + blood);
+            bloodBox.loseHealth( totalBlood, 1, blood);
             blood--;
+            
+            Destroy(collision.gameObject);
         }
      }
 }
