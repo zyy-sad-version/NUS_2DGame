@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timmy : MonoBehaviour
+public class TimmyBoss : MonoBehaviour
 {
     public float OneMove = 15f;
     public int EnergyValue = 100;
@@ -11,7 +11,6 @@ public class Timmy : MonoBehaviour
     public int direction = 0; //1 for up, 2 for down, 3 for left, 4 for right,record last move
     public bool Victory = false;
     private float currenttime = 0;
-    public Text Menergyvalue = null;
 
     //cool down time 
     private float coolDownTime = 0.5f;
@@ -21,7 +20,7 @@ public class Timmy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnergyValue = 18;
+        EnergyValue = 5;
         currenttime = Time.time;
         Victory = false;
         Final = true;
@@ -29,12 +28,13 @@ public class Timmy : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+        Debug.Log("EnergyValue" + EnergyValue);
         if((EnergyValue == 0) && (!Victory)){
-            Menergyvalue.text = "FAIL!";
+            Debug.Log("FAil");
             return;
         }
         if(Victory){
-            Menergyvalue.text = "WIN!!";
+            Debug.Log("Win");
             return;
         }
         if(Input.GetKey(KeyCode.Q)){ // quit
@@ -48,26 +48,25 @@ public class Timmy : MonoBehaviour
         Vector3 p = transform.localPosition;
         if (Input.GetKeyDown(KeyCode.A)){
             p.x -= OneMove;               
-            EnergyValue --;
+            //EnergyValue --;
             direction = 3;
         }
         else if(Input.GetKeyDown(KeyCode.D)){
             p.x += OneMove;    
-            EnergyValue --;
+            //EnergyValue --;
             direction = 4;
         }
         else if(Input.GetKeyDown(KeyCode.S)){
             p.y -= OneMove;                
-            EnergyValue --;
+            //EnergyValue --;
             direction = 2;
         }
         else if(Input.GetKeyDown(KeyCode.W)){
             p.y += OneMove;                    
-            EnergyValue --;
+            //EnergyValue --;
             direction = 1;
         }
         transform.localPosition = p;
-        Menergyvalue.text = "" + EnergyValue;
 
         if(Input.GetKeyDown(KeyCode.V)) Final = true;
 
@@ -128,15 +127,21 @@ public class Timmy : MonoBehaviour
             EnergyValue --;
         }
         else if(collision.gameObject.name == "Enemy"){
-            Debug.Log("collide with enemy");
             EnergyValue --;
         }
         else if(collision.gameObject.name == "Treasure"){
             Giftcount ++;
         }
         else if(collision.gameObject.name == "Friend"){
-            Debug.Log("friend collide");
             Victory = true;
+        }
+        else if(collision.gameObject.name == "Bullet(Clone)"){
+            Debug.Log("Bullet : " + EnergyValue);
+            EnergyValue --;
+        }
+        else if(collision.gameObject.name == "Explosion(Clone)"){
+            Debug.Log("Explosion : " + EnergyValue);
+            EnergyValue --;
         }
         else if(collision.gameObject.name == "Wall"){
             Vector3 p = transform.localPosition;
