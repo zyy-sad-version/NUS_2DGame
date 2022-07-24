@@ -7,13 +7,13 @@ using UnityEngine.UI;
 //boss1 attack by full-screen barrage
 public class Boss1 : MonoBehaviour
 {
-    private float spawnTime = 5f;        // The amount of time between each spawn.
-    private float spawnDelay = 8f;        // The amount of time before spawning starts.
+    private float spawnTime = 3f;        // The amount of time between each spawn.
+    private float spawnDelay = 5f;        // The amount of time before spawning starts.
     public int bulletCnt = 0;
     public Vector3[] attackLocations = new Vector3[9];
     public const float RotateSpeed = 0.03f;
     private float totalBlood;
-    public float blood = 10;    //changed from int to float
+    public float blood = 30;    //changed from int to float
     public int posCount = 1;
 
     public TimmyInBoss timmy;
@@ -21,13 +21,14 @@ public class Boss1 : MonoBehaviour
 
     private bool opt = false;
     
-
+    private int attackCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         totalBlood = blood;
         InvokeRepeating("RandomStyleAttack", spawnDelay, spawnTime);
+        timmy = GameObject.Find("Timmy").GetComponent<TimmyInBoss>();
     }
 
     // Update is called once per frame
@@ -40,6 +41,10 @@ public class Boss1 : MonoBehaviour
         }
     }
     private void RandomStyleAttack(){
+        attackCount ++;
+        if(attackCount == 2){
+            timmy.SetActivateAttack();
+        }
         if(opt){
             AttackByCrossBullet();
             opt = false;

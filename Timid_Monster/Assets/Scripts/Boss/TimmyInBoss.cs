@@ -36,6 +36,7 @@ public class TimmyInBoss : MonoBehaviour
     public AudioClip Damage;
     public AudioClip Trap;
 
+    public bool activateAttack = false;
 
     // to check which scene is active
     private Scene scene;    
@@ -65,13 +66,7 @@ public class TimmyInBoss : MonoBehaviour
             SceneManager.LoadScene("Fail");
         }
 
-        if(Input.GetKey(KeyCode.Q)){ // quit
-            #if UNITY_EDITOR 
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else 
-                Application.Quit();
-            #endif
-        }
+      
         
         Vector3 p = transform.localPosition;
         if (Input.GetKeyDown(KeyCode.A)){
@@ -151,7 +146,8 @@ public class TimmyInBoss : MonoBehaviour
         transform.localPosition = p;
         Menergyvalue.text = "" + EnergyValue;
 
-        if(Input.GetKey(KeyCode.UpArrow)){
+        if(activateAttack){
+            if(Input.GetKey(KeyCode.UpArrow)){
                 if ((Time.time - currenttime) > coolDownTime){
                     GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
                     Vector3 o = transform.localPosition ;
@@ -195,7 +191,7 @@ public class TimmyInBoss : MonoBehaviour
                     currenttime = Time.time;        
                 }
             }
-        
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
@@ -302,5 +298,9 @@ public class TimmyInBoss : MonoBehaviour
             }
 
         }
+    }
+
+    public void SetActivateAttack(){
+        activateAttack = true;
     }
 }

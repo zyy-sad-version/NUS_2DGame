@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameProperty : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class GameProperty : MonoBehaviour
     public int maxEnergy;
     public int giftcount;
     private static GameProperty  s_instance;
+    public string sceneName;
     void Awake(){
         if(s_instance!=null){
         Destroy(gameObject);
@@ -38,6 +40,8 @@ public class GameProperty : MonoBehaviour
             s_instance = this;
             DontDestroyOnLoad(this.gameObject); 
         }
+        
+        
         
             
         
@@ -62,6 +66,7 @@ public class GameProperty : MonoBehaviour
         maxEnergy=20;
         barrier=0;
         giftcount=0;
+        
     }
 
     // Update is called once per frame
@@ -77,5 +82,12 @@ public class GameProperty : MonoBehaviour
         if(gift2) attackSpeed=0.3f;
         if(gift3) barrier=3;
         if(gift4) maxEnergy=25;
+        getLastGameScene();
+    }
+    void getLastGameScene(){
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name != "Fail"){
+            sceneName = scene.name;
+        }
     }
 }

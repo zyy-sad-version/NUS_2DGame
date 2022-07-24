@@ -10,7 +10,6 @@ public class Enemy22 : MonoBehaviour
     private GameObject mTarget = null;
     private const float kVeryClose = 1f;
     private bool routeReverse = false;
-    private float zAngle = 0f;
     public SpriteRenderer sr;
     public Sprite[] pic;
     public AudioClip Damage;

@@ -10,7 +10,6 @@ public class Timmy : MonoBehaviour
     public GameProperty gameProperty;
     public float OneMove;
     public int EnergyValue;
-    public int Giftcount;
 
     public int direction = 0; //1 for up, 2 for down, 3 for left, 4 for right,record last move
     public bool Victory = false;
@@ -24,9 +23,6 @@ public class Timmy : MonoBehaviour
     public Sprite[] timmy;
     public int CountRight = 0;
     public int CountLeft = 0;
-
-    //cool down time 
-    private float coolDownTime = 0.5f;
 
     //sound
     public AudioClip Hitwall;
@@ -155,52 +151,6 @@ public class Timmy : MonoBehaviour
         }
         transform.localPosition = p;
         Menergyvalue.text = "" + EnergyValue;
-
-
-            if(Input.GetKey(KeyCode.UpArrow)){
-                if ((Time.time - currenttime) > coolDownTime){
-                    GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
-                    Vector3 o = transform.localPosition ;
-                    o.y += OneMove;
-                    e.transform.localPosition = o;
-                    Vector3 q = new Vector3(0,1,0);
-                    e.transform.up = q;
-                    currenttime = Time.time;        
-                }
-            }
-            else if(Input.GetKey(KeyCode.DownArrow)){
-                if ((Time.time - currenttime) > coolDownTime){
-                    GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
-                    Vector3 o = transform.localPosition ;
-                    o.y -= OneMove;
-                    e.transform.localPosition = o;
-                    Vector3 q = new Vector3(0,-1,0);
-                    e.transform.up = q;
-                    currenttime = Time.time;        
-                }
-            }
-            else if(Input.GetKey(KeyCode.LeftArrow)){
-                if ((Time.time - currenttime) > coolDownTime){
-                    GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
-                    Vector3 o = transform.localPosition ;
-                    o.x -= OneMove;
-                    e.transform.localPosition = o;
-                    Vector3 q = new Vector3(-1,0,0);
-                    e.transform.up = q;
-                    currenttime = Time.time;        
-                }
-            }
-            else if(Input.GetKey(KeyCode.RightArrow)){
-                if ((Time.time - currenttime) > coolDownTime){
-                    GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
-                    Vector3 o = transform.localPosition ;
-                    o.x += OneMove;
-                    e.transform.localPosition = o;
-                    Vector3 q = new Vector3(1,0,0);
-                    e.transform.up = q;
-                    currenttime = Time.time;        
-                }
-            }
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
@@ -231,7 +181,6 @@ public class Timmy : MonoBehaviour
         else if(collision.gameObject.tag == "Gift"){
             GetComponent<AudioSource>().clip = Gift;
             GetComponent<AudioSource>().Play();
-            Giftcount ++;
             Destroy(collision.gameObject);
         }
         else if(collision.gameObject.tag == "Wall"){
@@ -267,7 +216,6 @@ public class Timmy : MonoBehaviour
      void LoadProperty()
     {
         gameProperty = GameObject.FindObjectOfType<GameProperty>();
-        Giftcount = gameProperty.giftcount;
 
     } 
     void CheckPointCheck(){

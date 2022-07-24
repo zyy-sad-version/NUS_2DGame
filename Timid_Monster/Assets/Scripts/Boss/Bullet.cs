@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("bullet start:" + boss.name);
+      boss =  GameObject.FindGameObjectWithTag("Boss");
     }
 
     void Update()

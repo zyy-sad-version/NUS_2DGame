@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class NormalDialog3 : MonoBehaviour
 {
+    private GameProperty gameProperty;
     public Timmy timmy;
     public Button nextBtn;
     public Image dialogBox;
@@ -21,6 +22,7 @@ public class NormalDialog3 : MonoBehaviour
     void Start()
     {
        SetAllInactive();
+       gameProperty = GameObject.FindObjectOfType<GameProperty>();    
         
     }
 
@@ -63,6 +65,8 @@ public class NormalDialog3 : MonoBehaviour
                     ChangeText("Timmt get the Flame of Confidence.");
                     SetBtnInactive();
                     SetNextMainBtnActive();
+                    if(gameProperty.checkPoint1&gameProperty.checkPoint2&gameProperty.checkPoint3)
+                        SetNextLevelBtnActive();
                     break;
                 }
                 
@@ -80,6 +84,7 @@ public class NormalDialog3 : MonoBehaviour
         SetTextInactive();
         SetNextMainBtnInactive();
         SetFireInactive();
+        SetNextLevelBtnInactive();
 
     }
 
@@ -99,8 +104,11 @@ public class NormalDialog3 : MonoBehaviour
         dialog.gameObject.SetActive(true);
     }
     void SetNextMainBtnActive(){
-        nextLevel.gameObject.SetActive(true);
+        
         mainMenu.gameObject.SetActive(true);
+    }
+    void SetNextLevelBtnActive(){
+        nextLevel.gameObject.SetActive(true);
     }
     void SetFireActive(){
         fire.color = new Color(fire.color.r, fire.color.g, fire.color.b, 255);
@@ -133,6 +141,10 @@ public class NormalDialog3 : MonoBehaviour
     void SetFireInactive(){
         fire.color = new Color(fire.color.r, fire.color.g, fire.color.b, 0);
     }
+    void SetNextLevelBtnInactive(){
+        nextLevel.gameObject.SetActive(false);
+    }
+
 
     
 }

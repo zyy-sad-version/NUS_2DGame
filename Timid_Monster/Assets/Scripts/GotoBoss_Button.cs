@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GotoBoss_Button : MonoBehaviour
 {
      public GameProperty gameProperty;
+     
     // Start is called before the first frame update
     void Start()
     {
