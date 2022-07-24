@@ -9,8 +9,7 @@ public class TimmyInBoss : MonoBehaviour
 {
     public GameProperty gameProperty;
     public float OneMove;
-    public int EnergyValue;
-    public int Giftcount;
+    
 
     public int direction = 0; //1 for up, 2 for down, 3 for left, 4 for right,record last move
     public bool Victory = false;
@@ -19,15 +18,17 @@ public class TimmyInBoss : MonoBehaviour
 
     // timmy's attack force
     public float atk;
+    //cool down time 
+    private float coolDownTime;
+    public int EnergyValue;
+    public int barrierNum;
 
     public SpriteRenderer sr;
     public Sprite[] timmy;
     public int CountRight = 0;
     public int CountLeft = 0;
 
-    //cool down time 
-    private float coolDownTime;
-
+    
     //sound
     public AudioClip Hitwall;
     public AudioClip Walk;
@@ -195,7 +196,7 @@ public class TimmyInBoss : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if(gameProperty.barrier <=0){
+        if(barrierNum <=0){
             if(collision.gameObject.tag == "Boss"){
                 EnergyValue--;
                 Vector3 p = transform.localPosition;
@@ -266,7 +267,7 @@ public class TimmyInBoss : MonoBehaviour
         }
         else
         {
-            gameProperty.barrier--;
+            barrierNum--;
         }
       }
     
@@ -274,12 +275,12 @@ public class TimmyInBoss : MonoBehaviour
     //load the property of timmy from txt file
     void LoadProperty()
     {
+        
         gameProperty = GameObject.FindObjectOfType<GameProperty>();
-        atk=gameProperty.atk;
-        Giftcount = gameProperty.giftcount;
-        EnergyValue = gameProperty.maxEnergy;
-        coolDownTime = gameProperty.attackSpeed;
-
+        if(gameProperty.gift1) atk=3;
+        if(gameProperty.gift2) coolDownTime=0.3f;
+        if(gameProperty.gift3) barrierNum=3;
+        if(gameProperty.gift4) EnergyValue=25;
     }
     void CheckPointCheck(){
         Scene scene = SceneManager.GetActiveScene();

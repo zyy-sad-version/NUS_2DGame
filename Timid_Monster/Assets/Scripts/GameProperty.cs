@@ -18,17 +18,12 @@ public class GameProperty : MonoBehaviour
 
     //timmy's attack force
     public bool gift1;
-    public float atk;
     //timmy's attack speed
     public bool gift2;
-    public float attackSpeed;
     //timmt's barrier
     public bool gift3;
-    public int barrier;
     //timmy's max energy
     public bool gift4;
-    public int maxEnergy;
-    public int giftcount;
     private static GameProperty  s_instance;
     public string sceneName;
     void Awake(){
@@ -61,11 +56,7 @@ public class GameProperty : MonoBehaviour
         gift3=false;
         gift4=false;
 
-        atk=1;
-        attackSpeed=0.5f;
-        maxEnergy=20;
-        barrier=0;
-        giftcount=0;
+       
         
     }
 
@@ -78,10 +69,7 @@ public class GameProperty : MonoBehaviour
             checkPoint6=!checkPoint6;
             checkPoint7=!checkPoint7;
         }
-        if(gift1) atk=3;
-        if(gift2) attackSpeed=0.3f;
-        if(gift3) barrier=3;
-        if(gift4) maxEnergy=25;
+     
         getLastGameScene();
     }
     void getLastGameScene(){

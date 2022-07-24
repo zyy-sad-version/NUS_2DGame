@@ -60,7 +60,7 @@ public class NormalDialog1 : MonoBehaviour
                 }
                 case 6:{
                     SetTimmyInactive();
-                    ChangeText("Timmt get the Stone of Courage.");
+                    ChangeText("Timmy gets the Stone of Courage.");
                     SetBtnInactive();
                     SetNextMainBtnActive();
                     break;

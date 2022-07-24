@@ -60,14 +60,6 @@ public class Tuttimmy : MonoBehaviour
          
             SceneManager.LoadScene("TIMMYScene");
         }
-
-        if(Input.GetKey(KeyCode.Q)){ // quit
-            #if UNITY_EDITOR 
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else 
-                Application.Quit();
-            #endif
-        }
         
         Vector3 p = transform.localPosition;
         if (Input.GetKeyDown(KeyCode.A)){

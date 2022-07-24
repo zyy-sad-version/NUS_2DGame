@@ -58,12 +58,12 @@ public class NormalDialog4 : MonoBehaviour
                 }
                 case 5:{
                     SetbladeActive();
-                    ChangeText("Wait, Is that a shining sword?");
+                    ChangeText("Wait, is that a shining sword?");
                     break;
                 }
                 case 6:{
                     SetTimmyInactive();
-                    ChangeText("Timmt get the Flame of Confidence.");
+                    ChangeText("Timmy gets the Flame of Confidence.");
                     
                     break;
                 }

@@ -39,7 +39,6 @@ public class GiftBuff : MonoBehaviour
                     break;
                 }
             }
-            //gameProperty.giftcount++;
         }
     }
 

@@ -45,7 +45,7 @@ public class NormalDialog2 : MonoBehaviour
                 case 3:{
                     SetTimmyActive();
                     SetFriendInactive();
-                    ChangeText("I have two firend now!");
+                    ChangeText("I have two firends now!");
                     
                     break;
                 }
@@ -60,7 +60,7 @@ public class NormalDialog2 : MonoBehaviour
                 }
                 case 6:{
                     SetTimmyInactive();
-                    ChangeText("Timmt get the Iron of Resolve.");
+                    ChangeText("Timmy gets the Iron of Resolve.");
                     SetBtnInactive();
                     SetNextMainBtnActive();
                     break;

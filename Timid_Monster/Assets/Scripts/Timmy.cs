@@ -64,14 +64,6 @@ public class Timmy : MonoBehaviour
             Menergyvalue.text = "FAIL!";
             SceneManager.LoadScene("Fail");
         }
-
-        if(Input.GetKey(KeyCode.Q)){ // quit
-            #if UNITY_EDITOR 
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else 
-                Application.Quit();
-            #endif
-        }
         
         Vector3 p = transform.localPosition;
         if (Input.GetKeyDown(KeyCode.A)){
