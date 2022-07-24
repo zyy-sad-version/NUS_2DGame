@@ -45,7 +45,7 @@ public class NormalDialog2 : MonoBehaviour
                 case 3:{
                     SetTimmyActive();
                     SetFriendInactive();
-                    ChangeText("I have two firends now!");
+                    ChangeText("I have two friends now!");
                     
                     break;
                 }

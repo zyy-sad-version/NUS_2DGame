@@ -277,10 +277,10 @@ public class TimmyInBoss : MonoBehaviour
     {
         
         gameProperty = GameObject.FindObjectOfType<GameProperty>();
-        if(gameProperty.gift1) atk=3;
-        if(gameProperty.gift2) coolDownTime=0.3f;
-        if(gameProperty.gift3) barrierNum=3;
-        if(gameProperty.gift4) EnergyValue=25;
+        if(gameProperty.gift1) atk=3;else atk=1;
+        if(gameProperty.gift2) coolDownTime=0.3f; else coolDownTime=0.5f;
+        if(gameProperty.gift3) barrierNum=3; else barrierNum =0;
+        if(gameProperty.gift4) EnergyValue=25; else EnergyValue =20;
     }
     void CheckPointCheck(){
         Scene scene = SceneManager.GetActiveScene();

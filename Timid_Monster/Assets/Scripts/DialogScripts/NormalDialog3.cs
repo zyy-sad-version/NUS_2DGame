@@ -62,7 +62,7 @@ public class NormalDialog3 : MonoBehaviour
                 }
                 case 6:{
                     SetTimmyInactive();
-                    ChangeText("Timmt get the Flame of Confidence.");
+                    ChangeText("Timmy gets the Flame of Confidence.");
                     SetBtnInactive();
                     SetNextMainBtnActive();
                     if(gameProperty.checkPoint1&gameProperty.checkPoint2&gameProperty.checkPoint3)
