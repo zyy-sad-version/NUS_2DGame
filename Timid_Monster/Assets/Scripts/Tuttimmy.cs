@@ -250,7 +250,10 @@ public class Tuttimmy : MonoBehaviour
             Destroy(collision.gameObject);
         }
         else if(collision.gameObject.tag == "Wall"){
+<<<<<<< HEAD
             EnergyValue ++;
+=======
+>>>>>>> e40b2e866e3afb4058cf4921e489030f59cd9f33
             GetComponent<AudioSource>().clip = Hitwall;
             GetComponent<AudioSource>().Play();
             Vector3 p = transform.localPosition;

@@ -552,12 +552,15 @@ MonoBehaviour:
   Trap: {fileID: 8300000, guid: d404f43a6c42ddb42885d2ffd4be6465, type: 3}
   Gift: {fileID: 8300000, guid: 56b411414b13e5940914c51ad4a6807c, type: 3}
   Special: {fileID: 8300000, guid: 8047fdc58b0350a408a0f2b12cef371c, type: 3}
+<<<<<<< HEAD
   boundl: -108
   boundr: 116
   boundu: 112
   boundd: -112
   friendx: 130
   friendy: 70
+=======
+>>>>>>> e40b2e866e3afb4058cf4921e489030f59cd9f33
 --- !u!212 &12443824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3951,6 +3954,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+  m_SendPointerHoverToParent: 1
+>>>>>>> e40b2e866e3afb4058cf4921e489030f59cd9f33
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
