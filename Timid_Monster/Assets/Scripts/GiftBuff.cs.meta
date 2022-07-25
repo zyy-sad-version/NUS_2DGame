@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 80d46be2d92ed424e94fbf2428c30c71
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameProperty: {instanceID: 0}
+  - Gift: {fileID: 8300000, guid: 56b411414b13e5940914c51ad4a6807c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
