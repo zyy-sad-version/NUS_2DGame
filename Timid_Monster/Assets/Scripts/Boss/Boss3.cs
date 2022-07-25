@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Boss3 : MonoBehaviour
 {
-    private float spawnTime = 3f;        // The amount of time between each spawn.
+    private float spawnTime = 5f;        // The amount of time between each spawn.
     private float spawnDelay = 5f;        // The amount of time before spawning starts.
     public int bulletCnt = 0;
     public Vector3[] attackLocations = new Vector3[9];
@@ -19,12 +19,17 @@ public class Boss3 : MonoBehaviour
     private bool opt = false;
 
     private int attackCount = 0;
+    private float speed = 30f;
+    private int towards;
+    private GameObject mTarget = null;
+
 
     // Start is called before the first frame update
     void Start()
     {
         totalBlood = blood;
         InvokeRepeating("RandomStyleAttack", spawnDelay, spawnTime);
+        towards = Random.Range(1, 5);
         timmy = GameObject.Find("Timmy").GetComponent<TimmyInBoss>();
     }
 
@@ -36,6 +41,24 @@ public class Boss3 : MonoBehaviour
             Destroy(gameObject);
             timmy.Victory = true;
         }
+        if(towards == 1){
+            mTarget = GameObject.Find("A");
+        }
+        if(towards == 2){
+            mTarget = GameObject.Find("B");
+        }
+        if(towards == 3){
+            mTarget = GameObject.Find("C");
+        }
+        if(towards == 4){
+            mTarget = GameObject.Find("D");
+        }
+        Vector3 dir = new Vector3(mTarget.transform.position.x, mTarget.transform.position.y, 0F);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, dir, speed * Time.deltaTime);
+        float dist = Vector3.Distance(dir, transform.localPosition);
+        if(dist < 0.1f){
+            towards = Random.Range(1, 5);
+        }
     }
 
     private void RandomStyleAttack(){
@@ -44,12 +67,12 @@ public class Boss3 : MonoBehaviour
             timmy.SetActivateAttack();
         }
         if(opt){
-            AttackByTraceBullet();
-            opt = false;
+            AttackByBountifulBullet();
+            opt = !opt;
         }
         else{
-            AttackByBountifulBullet();
-            opt = true;
+            AttackByTraceBullet();
+            opt = !opt;
         }
     }
 
@@ -65,7 +88,7 @@ public class Boss3 : MonoBehaviour
     //Attack in a cross style
     private void AttackByTraceBullet(){
         GameObject forecastMark = Instantiate(Resources.Load("Prefabs/ForecastMark3") as GameObject);
-        forecastMark.transform.localPosition = new Vector3(32F, 40F, -1.1F);
+        forecastMark.transform.localPosition = new Vector3(transform.localPosition.x + 20f, transform.localPosition.y + 20f, -1.1F);
     }
 
     public void LaunchAttackStyleThree(){

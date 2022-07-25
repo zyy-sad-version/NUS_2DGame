@@ -23,12 +23,17 @@ public class Boss1 : MonoBehaviour
     
     private int attackCount = 0;
 
+    private float speed = 30f;
+    private int towards;
+    private GameObject mTarget = null;
+
     // Start is called before the first frame update
     void Start()
     {
         totalBlood = blood;
         InvokeRepeating("RandomStyleAttack", spawnDelay, spawnTime);
         timmy = GameObject.Find("Timmy").GetComponent<TimmyInBoss>();
+        towards = Random.Range(1, 5);
     }
 
     // Update is called once per frame
@@ -39,7 +44,26 @@ public class Boss1 : MonoBehaviour
             Destroy(gameObject);
             timmy.Victory = true;
         }
+        if(towards == 1){
+            mTarget = GameObject.Find("A");
+        }
+        if(towards == 2){
+            mTarget = GameObject.Find("B");
+        }
+        if(towards == 3){
+            mTarget = GameObject.Find("C");
+        }
+        if(towards == 4){
+            mTarget = GameObject.Find("D");
+        }
+        Vector3 dir = new Vector3(mTarget.transform.position.x, mTarget.transform.position.y, 0F);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, dir, speed * Time.deltaTime);
+        float dist = Vector3.Distance(dir, transform.localPosition);
+        if(dist < 0.1f){
+            towards = Random.Range(1, 5);
+        }
     }
+
     private void RandomStyleAttack(){
         attackCount ++;
         if(attackCount == 2){
@@ -59,19 +83,19 @@ public class Boss1 : MonoBehaviour
     private void AttackByCrossBullet(){
         //Forecast attack
         GameObject forecastMark = Instantiate(Resources.Load("Prefabs/ForecastMark") as GameObject);
-        forecastMark.transform.localPosition = new Vector3(32F, 40F, -1.1F);
+        forecastMark.transform.localPosition = new Vector3(transform.localPosition.x + 20f, transform.localPosition.y + 20f, -1.1F);
     }
 
     private void AttackByRotatingBeam(){
-        for(int i = 1; i <= 8; i++){
+        for(int i = 1; i <= 7; i++){
             GameObject beam1 = Instantiate(Resources.Load("Prefabs/Beam") as GameObject);
-            float posy = -40 - i*20;
-            beam1.transform.localPosition = new Vector3(0F, posy, -1F);
+            float posy = -20 - i * 20;
+            beam1.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + posy, -1F);
         }
-        for(int i = 1; i <= 10; i++){
+        for(int i = 1; i <= 7; i++){
             GameObject beam2 = Instantiate(Resources.Load("Prefabs/Beam") as GameObject);
-            float posy = 40 + i*20;
-            beam2.transform.localPosition = new Vector3(0F, posy, -1F);
+            float posy = 20 + i * 20;
+            beam2.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + posy, -1F);
         }
     }
 
@@ -80,7 +104,7 @@ public class Boss1 : MonoBehaviour
             GameObject e = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject); // Prefab MUST BE locaed in Resources/Prefabs folder!
             e.GetComponent<Bullet>().boss = this.gameObject;
             bulletCnt++;
-            e.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0F) ;
+            e.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 1F) ;
             switch(i){
                 case 1:
                     e.transform.Rotate(0, 0, 0);

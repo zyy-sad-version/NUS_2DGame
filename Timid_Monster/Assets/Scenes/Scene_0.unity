@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1070,11 +1070,11 @@ MonoBehaviour:
   checkPoint5: 0
   checkPoint6: 0
   checkPoint7: 0
-  atk: 0
-  attackSpeed: 0
-  maxEnergy: 0
-  barrier: 0
-  giftcount: 0
+  gift1: 0
+  gift2: 0
+  gift3: 0
+  gift4: 0
+  sceneName: 
 --- !u!4 &863653712
 Transform:
   m_ObjectHideFlags: 0
@@ -1308,7 +1308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

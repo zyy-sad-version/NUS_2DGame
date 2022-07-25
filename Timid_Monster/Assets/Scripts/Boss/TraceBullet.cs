@@ -11,7 +11,7 @@ public class TraceBullet : MonoBehaviour
     static private Boss3 boss = null;
     public const float RotateSpeed = 0.03f;
     public const float kVeryClose = 3f;
-    public const float speed = 10f;
+    public const float speed = 25f;
 
     // Start is called before the first frame update
     void Start()

@@ -15,6 +15,7 @@ public class BountifulBullet : MonoBehaviour
 
     void Start(){
         InvokeRepeating("Spawn", spawnDelay, spawnTime);
+        Destroy(gameObject, 7f);
     }
 
     void Update(){

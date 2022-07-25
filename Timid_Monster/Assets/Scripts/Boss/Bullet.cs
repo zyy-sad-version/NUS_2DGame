@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
       boss =  GameObject.FindGameObjectWithTag("Boss");
+      Destroy(gameObject, 8f);
     }
 
     void Update()

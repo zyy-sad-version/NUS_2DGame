@@ -18,14 +18,20 @@ public class Boss2 : MonoBehaviour
     public Blood bloodBox;
     public TimmyInBoss timmy;
 
-    private bool opt = false;
+    private int opt = 0;
     private int attackCount = 0;
+
+    private float speed = 30f;
+    private int towards;
+    private GameObject mTarget = null;
+
     // Start is called before the first frame update
     void Start()
     {
         totalBlood = blood;
         InvokeRepeating("RandomStyleAttack", spawnDelay, spawnTime);
         timmy = GameObject.Find("Timmy").GetComponent<TimmyInBoss>();
+        towards = Random.Range(1, 5);
     }
 
     // Update is called once per frame
@@ -37,6 +43,24 @@ public class Boss2 : MonoBehaviour
             timmy.Victory =true;
            // SceneManager.LoadScene("BossScene3");
         }
+        if(towards == 1){
+            mTarget = GameObject.Find("A");
+        }
+        if(towards == 2){
+            mTarget = GameObject.Find("B");
+        }
+        if(towards == 3){
+            mTarget = GameObject.Find("C");
+        }
+        if(towards == 4){
+            mTarget = GameObject.Find("D");
+        }
+        Vector3 dir = new Vector3(mTarget.transform.position.x, mTarget.transform.position.y, 0F);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, dir, speed * Time.deltaTime);
+        float dist = Vector3.Distance(dir, transform.localPosition);
+        if(dist < 0.1f){
+            towards = Random.Range(1, 5);
+        }
     }
 
     private void RandomStyleAttack(){
@@ -44,13 +68,16 @@ public class Boss2 : MonoBehaviour
         if(attackCount == 2){
             timmy.SetActivateAttack();
         }
-        if(opt){
+        if(opt == 1){
             AttackBySplitBullet();
-            opt = false;
+            opt ++;
         }
         else{
             AttackByRandomExplosion();
-            opt = true;
+            opt ++;
+            if(opt == 3){
+                opt = 0;
+            }
         }
     }
     private void AttackBySplitBullet(){

@@ -9,18 +9,21 @@ public class SplitBullet : MonoBehaviour
     private float kVeryClose = 3f;
     public const float RotateSpeed = 0.03f;
     private float spawnTime = 2f;
-    private float spawnDelay = 1f;
+    private float spawnDelay = 2f;
 
     void Start()
     {
         timmy = GameObject.Find("Timmy").GetComponent<TimmyInBoss>();
         transform.up = new Vector3(timmy.transform.position.x, timmy.transform.position.y, -3F);
         InvokeRepeating("Spawn", spawnDelay, spawnTime);
+        Debug.Log("Timmy position: " +  timmy.transform.position);
+        Destroy(gameObject, 8f);
     }
 
     void Update()
     {
         transform.position += transform.up * (speed * Time.smoothDeltaTime);
+        Debug.Log("Towa: " + transform.up);
         CameraSupport s = Camera.main.GetComponent<CameraSupport>(); 
         if (s != null) 
         {

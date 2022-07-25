@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ForecastMark : MonoBehaviour
 {
-    private float spawnTime = 0.5f;        // The amount of time between each spawn.
-    private float spawnDelay = 0.5f;        // The amount of time before spawning starts.
+    private float spawnTime = 0.2f;        // The amount of time between each spawn.
+    private float spawnDelay = 0.2f;        // The amount of time before spawning starts.
     private bool flickering = true;
     static private Bullet bullet;
     public int flickerCount = 0;
