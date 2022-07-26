@@ -41,6 +41,7 @@ public class TimmyInBoss : MonoBehaviour
     public float boundr;
     public float boundd;
     public float boundu;
+    public float Bulletspeed;
 
     public bool activateAttack = false;
 
@@ -175,47 +176,17 @@ public class TimmyInBoss : MonoBehaviour
         Menergyvalue.text = "" + EnergyValue;
 
         if(activateAttack){
-            if(Input.GetKey(KeyCode.UpArrow)){
+            if(Input.GetMouseButton(0)){
                 if ((Time.time - currenttime) > coolDownTime){
                     GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
                     Vector3 o = transform.localPosition ;
-                    o.y += OneMove;
+                    Vector3 mousep = Input.mousePosition;
+                    mousep = Camera.main.ScreenToWorldPoint(mousep);
+                    mousep.z = 0;
+                    float BulletAngle = Vector2.Angle(mousep-o,Vector2.up);
+                    if(mousep.x > o.x)  BulletAngle = -BulletAngle;
                     e.transform.localPosition = o;
-                    Vector3 q = new Vector3(0,1,0);
-                    e.transform.up = q;
-                    currenttime = Time.time;        
-                }
-            }
-            else if(Input.GetKey(KeyCode.DownArrow)){
-                if ((Time.time - currenttime) > coolDownTime){
-                    GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
-                    Vector3 o = transform.localPosition ;
-                    o.y -= OneMove;
-                    e.transform.localPosition = o;
-                    Vector3 q = new Vector3(0,-1,0);
-                    e.transform.up = q;
-                    currenttime = Time.time;        
-                }
-            }
-            else if(Input.GetKey(KeyCode.LeftArrow)){
-                if ((Time.time - currenttime) > coolDownTime){
-                    GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
-                    Vector3 o = transform.localPosition ;
-                    o.x -= OneMove;
-                    e.transform.localPosition = o;
-                    Vector3 q = new Vector3(-1,0,0);
-                    e.transform.up = q;
-                    currenttime = Time.time;        
-                }
-            }
-            else if(Input.GetKey(KeyCode.RightArrow)){
-                if ((Time.time - currenttime) > coolDownTime){
-                    GameObject e = Instantiate(Resources.Load("Prefabs/Arrow") as GameObject); // Prefab MUST BE located in Resources/Prefabs folder!
-                    Vector3 o = transform.localPosition ;
-                    o.x += OneMove;
-                    e.transform.localPosition = o;
-                    Vector3 q = new Vector3(1,0,0);
-                    e.transform.up = q;
+                    e.transform.eulerAngles = new Vector3(0,0,BulletAngle);
                     currenttime = Time.time;        
                 }
             }
@@ -300,7 +271,7 @@ public class TimmyInBoss : MonoBehaviour
     
     
     //load the property of timmy from txt file
-     void LoadProperty()
+       void LoadProperty()
     {
         
         gameProperty = GameObject.FindObjectOfType<GameProperty>();
@@ -308,10 +279,10 @@ public class TimmyInBoss : MonoBehaviour
         if(gameProperty.gift2) coolDownTime=0.3f; else coolDownTime=0.5f;
         if(gameProperty.gift3) barrierNum=3; else barrierNum =0;
         if(gameProperty.gift4) EnergyValue=25; else EnergyValue =20;
-    } 
+    }   
     void CheckPointCheck(){
         Scene scene = SceneManager.GetActiveScene();
-         switch(scene.name){
+           switch(scene.name){
             case "BossScene":{
                 gameProperty.checkPoint5=true;
                 break;
@@ -324,8 +295,7 @@ public class TimmyInBoss : MonoBehaviour
                 gameProperty.checkPoint7=true;
                 break;
             }
-
-        } 
+        }   
     }
 
     public void SetActivateAttack(){

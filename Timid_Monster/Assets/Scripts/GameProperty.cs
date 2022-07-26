@@ -44,10 +44,10 @@ public class GameProperty : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkPoint1=true;
-        checkPoint2=true;
-        checkPoint3=true;
-        checkPoint4=true;
+        checkPoint1=false;
+        checkPoint2=false;
+        checkPoint3=false;
+        checkPoint4=false;
         checkPoint5=false;
         checkPoint6=false;
         checkPoint7=false;
