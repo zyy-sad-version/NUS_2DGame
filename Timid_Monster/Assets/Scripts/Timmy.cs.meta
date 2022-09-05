@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 712d1524d56baa646852d8c04f7096b2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameProperty: {instanceID: 0}
+  - Menergyvalue: {instanceID: 0}
+  - sr: {instanceID: 0}
+  - Hitwall: {fileID: 8300000, guid: 34f9f66d21079bf4a85055fa493bdb10, type: 3}
+  - Walk: {fileID: 8300000, guid: e91ec55e8151e2d40b46d341ef61541e, type: 3}
+  - Win: {fileID: 8300000, guid: 9b37b52e1ea300441a8d5afcdedb39ab, type: 3}
+  - Heal: {fileID: 8300000, guid: 48fe4e322cc4a5d4eaa4ac6054cebe5d, type: 3}
+  - Damage: {fileID: 8300000, guid: 22422407b67a95f47bce56e8da9e8de2, type: 3}
+  - Trap: {fileID: 8300000, guid: d404f43a6c42ddb42885d2ffd4be6465, type: 3}
+  - Gift: {fileID: 8300000, guid: 56b411414b13e5940914c51ad4a6807c, type: 3}
+  - Special: {fileID: 8300000, guid: 8047fdc58b0350a408a0f2b12cef371c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
